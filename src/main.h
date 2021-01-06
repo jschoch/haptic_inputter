@@ -1,5 +1,11 @@
 #pragma once
 
-#include <ArduinoJson.h>
-#include <SimpleFOC.h>
+#ifdef UNIT_TEST
+    #include "ArduinoFake.h"
+#else
+    #include "Arduino.h"
+    #include <ArduinoJson.h>
+    #include <SimpleFOC.h>
+#endif
+
 #include "threePosLever.h"
