@@ -1,5 +1,13 @@
 #pragma once
+#define __min(a,b) ((a)<(b)?(a):(b))
 #include <cstdint>
+
+#ifdef UNIT_TEST
+#include "fake_serial.h"
+#include "fake_motor.h"
+#else
+#define ARDUINOJSON_ENABLE_ARDUINO_STRING 1
+#endif
 
 // A haptic device
 
@@ -31,16 +39,16 @@ class Hap {
         int id = 0;
         int foo;
         int iState = 0;
-        //char name[];
         Htype myhtype;
+        FOCMotor motor;
         void pong();
         void ack();
         void send(Evt e);
         void receive(Evt e);
         void receive(Msg m);
         void print();
-        Hap();
-        Hap(int inid){
-            id = inid;
+        Hap(int _id,FOCMotor _motor){
+            id = _id;
+            motor = _motor;
         };
 };

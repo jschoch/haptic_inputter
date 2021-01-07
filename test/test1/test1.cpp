@@ -10,15 +10,14 @@
 int main( int argc, char **argv) {
     UNITY_BEGIN();
     
-    TEST_ASSERT_EQUAL_INT(1,1);
-
-    Hap hap = Hap();
+    FOCMotor motor = FOCMotor();
+    Hap hap = Hap(0,motor);
 
     std::cout  << "Hap id " << hap.id << "\n";
 
     //TEST_ASSERT_EQUAL_INT(1,hap.id);
 
-    Hap hap2 = Hap(100);
+    Hap hap2 = Hap(100,motor);
 
     std::cout  << "Hap id " << hap2.id << "\n";
     

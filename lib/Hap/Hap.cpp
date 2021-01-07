@@ -1,6 +1,5 @@
 #include "Hap.h"
 #include <cstdio>
-//#define ARDUINOJSON_ENABLE_ARDUINO_STRING 1
 #include <ArduinoJson.h>
 
 DynamicJsonDocument msgDoc(100);
@@ -15,10 +14,6 @@ void initMsgDoc(){
 }
 
 
-Hap::Hap(){
-    id= 0;
-    myhtype = Htype::FiveP;
-}
 
 // send() always emits a change event and the current state
 void Hap::ack(){
@@ -35,6 +30,7 @@ void Hap::send(Evt e){
     //size_t len = serializeMsgPack(msgDoc,outBuffer);
     size_t len = serializeJson(msgDoc, outBuffer);
     printf(" sending event: %d len: %d\n%s",e,len,outBuffer);
+    Serial.print(outBuffer);
 }
 void Hap::pong(){
     send(Evt::PONG);
@@ -51,6 +47,7 @@ void Hap::receive(Msg m){
             if (iState != m.iState){
                 printf("updateing iState to: %d",m.iState);
                 iState = m.iState;
+                motor.move(iState);
             }
             break;
         default: 
