@@ -24,7 +24,7 @@ int main( int argc, char **argv) {
     
     TEST_ASSERT_EQUAL_INT(100,hap2.id);
 
-    hap.receive(Evt::CHANGE);
+    hap.receive(Evt::CHANGE2);
 
 
     // initialize the Hap
@@ -38,13 +38,13 @@ int main( int argc, char **argv) {
 
     // Mock ELS send mode
 
-    Msg m = {11,hap.id,Evt::CHANGE,100,Htype::FiveP};
+    Msg m = {11,hap.id,Evt::CHANGE2,100,Htype::FiveP};
 
     hap.receive(m);
 
     // Mock ELS set state
 
-    m = {11,hap.id,Evt::CHANGE,0,Htype::FiveP};
+    m = {11,hap.id,Evt::CHANGE2,0,Htype::FiveP};
     hap.receive(m);
     // Change state, send msg
 
@@ -54,12 +54,12 @@ int main( int argc, char **argv) {
     // waiting for ack
 
     // ack received, do something with it
-    m = {11,hap.id,Evt::CHANGE,-2,Htype::FiveP};
+    m = {11,hap.id,Evt::CHANGE2,-2,Htype::FiveP};
     hap.receive(m);
     hap.ack();
 
     // Mock ELS sends done state change event msg
-    m = {11,hap.id,Evt::CHANGE,0,Htype::FiveP};
+    m = {11,hap.id,Evt::CHANGE2,0,Htype::FiveP};
     hap.receive(m);
     hap.ack();
 

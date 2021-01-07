@@ -10,5 +10,5 @@
 #endif
 
 #include <Hap.h>
-#include "lib/"
+
 #include "threePosLever.h"

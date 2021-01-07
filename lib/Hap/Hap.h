@@ -3,16 +3,16 @@
 
 // A haptic device
 
-enum class Htype{
+enum class Htype:int{
     ThreeP,
     DETENT,
-    FiveP,
+    FiveP
 };
 
-enum class Evt{
+enum class Evt:int{
     PONG,
     ACK,
-    CHANGE
+    CHANGE2
 };
 
 struct Msg{
@@ -30,7 +30,7 @@ class Hap {
     public: 
         int id = 0;
         int foo;
-        int iState =0;
+        int iState = 0;
         //char name[];
         Htype myhtype;
         void pong();
