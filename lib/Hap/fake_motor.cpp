@@ -1,7 +1,11 @@
 #include "fake_motor.h"
+#include <iostream>
 
+#ifdef UNIT_TEST
 
 void FOCMotor::move(float target){
-    Serial.print("Move");
+    std::cout << "FOCMove " << target << "\n";
 
 };
+
+#endif

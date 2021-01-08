@@ -6,6 +6,7 @@
 #include "fake_serial.h"
 #include "fake_motor.h"
 #else
+#include <SimpleFOC.h>
 #define ARDUINOJSON_ENABLE_ARDUINO_STRING 1
 #endif
 
@@ -40,14 +41,16 @@ class Hap {
         int foo;
         int iState = 0;
         Htype myhtype;
-        FOCMotor motor;
+        //BLDCMotor *motor;
+        FOCMotor *motor;
         void pong();
         void ack();
         void send(Evt e);
         void receive(Evt e);
         void receive(Msg m);
         void print();
-        Hap(int _id,FOCMotor _motor){
+        //Hap(int _id,BLDCMotor *_motor){
+        Hap(int _id,FOCMotor * _motor){
             id = _id;
             motor = _motor;
         };

@@ -47,7 +47,7 @@ void Hap::receive(Msg m){
             if (iState != m.iState){
                 printf("updateing iState to: %d",m.iState);
                 iState = m.iState;
-                motor.move(iState);
+                motor->move(iState);
             }
             break;
         default: 

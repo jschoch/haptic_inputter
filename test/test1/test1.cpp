@@ -4,20 +4,24 @@
 #include <unity.h>
 #include <iostream>
 #include <Hap.h>
-
+#include <fake_motor.h>
+#include <threePosLever.h>
 
 
 int main( int argc, char **argv) {
     UNITY_BEGIN();
     
     FOCMotor motor = FOCMotor();
-    Hap hap = Hap(0,motor);
+    TPL tpl;
+    Hap hap = Hap(0,&motor);
+
+
 
     std::cout  << "Hap id " << hap.id << "\n";
 
     //TEST_ASSERT_EQUAL_INT(1,hap.id);
 
-    Hap hap2 = Hap(100,motor);
+    Hap hap2 = Hap(100,&motor);
 
     std::cout  << "Hap id " << hap2.id << "\n";
     
